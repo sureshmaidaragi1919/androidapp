@@ -1,7 +1,7 @@
 package com.example.androidcleanarchapp.network
 
 data class EntryModel(
-    val count: Int,
+    var count: Int,
     val entriesList: List<Entry>,
 ) {
     data class Entry(
