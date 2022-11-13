@@ -25,7 +25,7 @@ class AppModule {
         return Retrofit.Builder()
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("")
+            .baseUrl("https://api.publicapis.org/")
             .build()
     }
 }

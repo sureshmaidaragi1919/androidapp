@@ -19,6 +19,7 @@ class MainViewModel @Inject constructor(private val useCase: FetchEntriesUseCase
     val data: LiveData<State> get() = _data
 
     private val compositeDisposable = CompositeDisposable()
+
     fun fetchEntry() {
 
         compositeDisposable.add(
@@ -33,6 +34,11 @@ class MainViewModel @Inject constructor(private val useCase: FetchEntriesUseCase
                 })
         )
 
+    }
+
+    override fun onCleared() {
+        compositeDisposable.clear()
+        super.onCleared()
     }
 
     sealed class State {
