@@ -3,13 +3,13 @@ package com.example.androidcleanarchapp.util
 import android.view.View
 import android.widget.TextView
 
-fun TextView.makeGone() {
+fun View.makeGone() {
     if (this.visibility == View.VISIBLE) {
         this.visibility = View.GONE
     }
 }
 
-fun TextView.makeVisible() {
+fun View.makeVisible() {
     if (this.visibility == View.GONE || this.visibility == View.INVISIBLE) {
         this.visibility = View.VISIBLE
     }

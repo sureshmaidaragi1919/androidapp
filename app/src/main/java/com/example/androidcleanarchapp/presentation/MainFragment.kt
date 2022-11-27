@@ -44,7 +44,15 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetchEntry()
         observeLiveData()
+        initSwipeToRefresh()
 
+    }
+
+    private fun initSwipeToRefresh() {
+        binding.swipeToRefresh.setOnRefreshListener {
+            binding.itemRc.makeGone()
+            viewModel.fetchEntry()
+        }
     }
 
     private fun observeLiveData() {
@@ -74,6 +82,7 @@ class MainFragment : Fragment() {
 
         itemsAdapter = ItemsAdapter()
         binding.itemRc.apply {
+            makeVisible()
             adapter = itemsAdapter
         }
         itemsAdapter?.itemsList = model.entriesList
