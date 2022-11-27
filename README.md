@@ -1,4 +1,4 @@
-# androidapp
+# Android Clean Architecture using MVVM, Retrofit, Hilt
 
 This app is built using the latest android components as follows, for just learning purpose, anyone can raise pull request
 1. Kotlin 
