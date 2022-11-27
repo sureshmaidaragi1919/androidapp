@@ -1,9 +1,9 @@
-package com.example.androidcleanarchapp
+package com.example.androidcleanarchapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.androidcleanarchapp.R
 import com.example.androidcleanarchapp.databinding.ActivityMainBinding
-import com.example.androidcleanarchapp.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

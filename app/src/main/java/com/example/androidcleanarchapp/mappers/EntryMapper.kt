@@ -1,7 +1,8 @@
 package com.example.androidcleanarchapp.mappers
 
-import com.example.androidcleanarchapp.network.EntryModel
-import com.example.androidcleanarchapp.network.EntryResponse
+import com.example.androidcleanarchapp.data.Entry
+import com.example.androidcleanarchapp.data.EntryModel
+import com.example.androidcleanarchapp.data.EntryResponse
 
 object EntryMapper {
 
@@ -9,7 +10,7 @@ object EntryMapper {
         EntryModel(
             count = response.count?:0,
             entriesList = response.entriesList?.map {
-                EntryModel.Entry(
+              Entry(
                     api = it.api.orEmpty(),
                     description = it.description.orEmpty(),
                     auth = it.auth.orEmpty(),

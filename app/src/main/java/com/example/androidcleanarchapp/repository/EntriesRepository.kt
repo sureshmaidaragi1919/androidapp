@@ -1,7 +1,7 @@
 package com.example.androidcleanarchapp.repository
 
 import com.example.androidcleanarchapp.network.AppApi
-import com.example.androidcleanarchapp.network.EntryResponse
+import com.example.androidcleanarchapp.data.EntryResponse
 import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
 

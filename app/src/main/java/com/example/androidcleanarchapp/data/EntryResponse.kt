@@ -1,4 +1,4 @@
-package com.example.androidcleanarchapp.network
+package com.example.androidcleanarchapp.data
 
 import com.google.gson.annotations.SerializedName
 

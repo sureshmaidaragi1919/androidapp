@@ -1,7 +1,7 @@
 package com.example.androidcleanarchapp.usecase
 
+import com.example.androidcleanarchapp.data.EntryModel
 import com.example.androidcleanarchapp.mappers.EntryMapper
-import com.example.androidcleanarchapp.network.EntryModel
 import com.example.androidcleanarchapp.repository.EntriesRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable

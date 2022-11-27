@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidCleanArchApp</string>
+    <string name="desc">Desc : %s</string>
+    <string name="api">Api : %s</string>
 </resources>

@@ -1,9 +1,9 @@
-package com.example.androidcleanarchapp.ui.main
+package com.example.androidcleanarchapp.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.androidcleanarchapp.network.EntryModel
+import com.example.androidcleanarchapp.data.EntryModel
 import com.example.androidcleanarchapp.usecase.FetchEntriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
