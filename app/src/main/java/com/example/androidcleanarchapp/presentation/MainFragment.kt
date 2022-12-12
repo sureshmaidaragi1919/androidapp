@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.androidcleanarchapp.data.EntryModel
 import com.example.androidcleanarchapp.databinding.FragmentMainBinding
 import com.example.androidcleanarchapp.presentation.itemsview.ItemsAdapter
-import com.example.androidcleanarchapp.util.makeGone
-import com.example.androidcleanarchapp.util.makeVisible
+import com.example.androidcleanarchapp.utils.makeGone
+import com.example.androidcleanarchapp.utils.makeVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +25,7 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    private var itemsAdapter: ItemsAdapter? = null
+    private val itemsAdapter by lazy { ItemsAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,12 +80,11 @@ class MainFragment : Fragment() {
 
     private fun setUpAdapter(model: EntryModel) {
 
-        itemsAdapter = ItemsAdapter()
         binding.itemRc.apply {
             makeVisible()
             adapter = itemsAdapter
         }
-        itemsAdapter?.itemsList = model.entriesList
+        itemsAdapter.submitList(model.entriesList)
     }
 
     override fun onDestroy() {

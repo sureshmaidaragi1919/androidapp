@@ -2,20 +2,26 @@ package com.example.androidcleanarchapp.presentation.itemsview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.androidcleanarchapp.R
 import com.example.androidcleanarchapp.data.Entry
 import com.example.androidcleanarchapp.databinding.LayoutListItemBinding
+import com.example.androidcleanarchapp.utils.EntryDiffCallback
 import kotlinx.coroutines.NonDisposableHandle.parent
 
 class ItemsAdapter() : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
 
-    var itemsList = listOf<Entry>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+
+    private var oldItemsList: List<Entry> = emptyList()
+
+    fun submitList(newList: List<Entry>) {
+        val diffUtil = EntryDiffCallback(oldItemsList, newList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        oldItemsList = newList
+        diffResult.dispatchUpdatesTo(this)
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -25,11 +31,11 @@ class ItemsAdapter() : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bindView(itemsList[position])
+        holder.bindView(oldItemsList[position])
     }
 
     override fun getItemCount(): Int {
-        return itemsList.size
+        return oldItemsList.size
     }
 
     class ItemViewHolder constructor(
