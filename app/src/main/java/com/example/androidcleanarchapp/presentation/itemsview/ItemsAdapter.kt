@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.androidcleanarchapp.R
 import com.example.androidcleanarchapp.data.Entry
 import com.example.androidcleanarchapp.databinding.LayoutListItemBinding
+import kotlinx.coroutines.NonDisposableHandle.parent
 
 class ItemsAdapter() : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
 
@@ -20,7 +21,7 @@ class ItemsAdapter() : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val binding =
             LayoutListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemViewHolder(binding, parent)
+        return ItemViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
@@ -32,13 +33,14 @@ class ItemsAdapter() : RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
     }
 
     class ItemViewHolder constructor(
-        private val itemBinding: LayoutListItemBinding, private val parent: ViewGroup
+        private val itemBinding: LayoutListItemBinding
     ) : ViewHolder(itemBinding.root) {
 
         fun bindView(item: Entry) {
-            itemBinding.itemTitle.text = parent.context.resources.getString(R.string.api, item.api)
+            itemBinding.itemTitle.text =
+                itemBinding.root.resources.getString(R.string.api, item.api)
             itemBinding.itemDesc.text =
-                parent.context.resources.getString(R.string.desc, item.description)
+                itemBinding.root.resources.getString(R.string.desc, item.description)
         }
 
     }
